@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'social_media_lists/index'
+
+  root :to => 'social_media_lists#index'  
 end

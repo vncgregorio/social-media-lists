@@ -7,6 +7,8 @@ puts ">>>>starting loading records in Posts table<<<<"
 
   sma = SocialMediaAccount.all.sample
 
+  image_link = [true, false].sample ? 'https://picsum.photos/300/200' : nil
+
   if sma.profile_link.include?('twitter')
     link = "#{sma.profile_link}/status/#{Faker::Twitter.status[:id]}?s=20"
     content = Faker::Twitter.status[:text]
@@ -29,7 +31,8 @@ puts ">>>>starting loading records in Posts table<<<<"
     :social_media_account => sma,
     :post_date => Faker::Date.between(from: 2.months.ago, to: Date.today),
     :link => link,
-    :content => content
+    :content => content,
+    :image_link => image_link
   )
 end
 puts ""

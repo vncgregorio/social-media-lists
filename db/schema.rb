@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_201017) do
     t.datetime "post_date"
     t.string "link"
     t.text "content"
+    t.string "image_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_date"], name: "index_posts_on_post_date"
