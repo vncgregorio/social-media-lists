@@ -5,18 +5,21 @@ networks = ['facebook', 'twitter']
 
   person = Person.all.sample
   network = networks.sample
+  username = Faker::Internet.username(specifier: person.name, separators: %w(. _ -))
 
-  profile_link = "https://www.#{network}.com/#{Faker::Internet.username(specifier: person.name, separators: %w(. _ -))}"
+  profile_link = "https://www.#{network}.com/#{username}"
 
   record = SocialMediaAccount.find_by(:profile_link => profile_link)
   while record.present?
-    profile_link = "https://www.#{network}.com/#{Faker::Internet.username(specifier: 6..12, separators: %w(. _ -))}"
+    username = Faker::Internet.username(specifier: 6..12, separators: %w(. _ -))
+    profile_link = "https://www.#{network}.com/#{username}"
     record = SocialMediaAccount.find_by(:profile_link => profile_link)
   end
 
   sma = SocialMediaAccount.create!(
     :person => person,
     :network => network,
+    :username => username,
     :profile_link => profile_link
   )
 end

@@ -5,16 +5,32 @@ puts ">>>>starting loading records in Posts table<<<<"
 (0..999).each do |n|
   print "."
 
+  images = [
+    'https://picsum.photos/id/1/300/200',
+    'https://picsum.photos/id/100/300/200',
+    'https://picsum.photos/id/1026/300/200',
+    'https://picsum.photos/id/1027/300/200',
+    'https://picsum.photos/id/400/300/200',
+    'https://picsum.photos/id/780/300/200',
+    'https://picsum.photos/id/945/300/200',
+    'https://picsum.photos/id/1005/300/200',
+    'https://picsum.photos/id/103/300/200',
+    'https://picsum.photos/id/104/300/200',
+    'https://picsum.photos/id/1047/300/200',
+    'https://picsum.photos/id/1053/300/200',
+    'https://picsum.photos/id/1004/300/200',
+  ]
+
   sma = SocialMediaAccount.all.sample
 
-  image_link = [true, false].sample ? 'https://picsum.photos/300/200' : nil
+  image_link = [true, false].sample ? images.sample : nil
 
   if sma.profile_link.include?('twitter')
     link = "#{sma.profile_link}/status/#{Faker::Twitter.status[:id]}?s=20"
     content = Faker::Twitter.status[:text]
   else
     link = "#{sma.profile_link}/posts/#{Faker::Number.number(digits: 20)}"
-    content = Faker::Lorem.paragraph(sentence_count: 3)
+    content = Faker::Lorem.paragraphs(number: rand(2..8)).join('\n')
   end
 
   record = Post.find_by(:link => link)
