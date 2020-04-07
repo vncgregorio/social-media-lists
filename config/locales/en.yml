@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  views:
+    actions:
+      per_page: "Per page"
+      content: "ex.: lorem ipsum"
+      initial_date: "ex.: 20200101"
+      final_date: "ex.: 20201231"
+      filter: "Filter"
+    filters:
+      records: "records"
+      networks: "Social Networks:"
+      lists: "Lists:"

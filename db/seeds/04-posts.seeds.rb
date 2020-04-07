@@ -19,6 +19,10 @@ puts ">>>>starting loading records in Posts table<<<<"
     'https://picsum.photos/id/1047/300/200',
     'https://picsum.photos/id/1053/300/200',
     'https://picsum.photos/id/1004/300/200',
+    'https://picsum.photos/id/1010/300/200',
+    'https://picsum.photos/id/1020/300/200',
+    'https://picsum.photos/id/800/300/200',
+    'https://picsum.photos/id/247/300/200',
   ]
 
   sma = SocialMediaAccount.all.sample

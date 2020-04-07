@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2020_04_04_201017) do
     t.index ["name"], name: "index_lists_on_name"
   end
 
+  create_table "networks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.string "connector", default: "db/seed"
+    t.string "api_url", default: "database"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_networks_on_name"
+  end
+
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -49,12 +59,12 @@ ActiveRecord::Schema.define(version: 2020_04_04_201017) do
 
   create_table "social_media_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "person_id"
-    t.string "network"
+    t.integer "network_id"
     t.string "username"
     t.string "profile_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["network"], name: "index_social_media_accounts_on_network"
+    t.index ["network_id"], name: "index_social_media_accounts_on_network_id"
     t.index ["person_id"], name: "index_social_media_accounts_on_person_id"
     t.index ["username"], name: "index_social_media_accounts_on_username"
   end

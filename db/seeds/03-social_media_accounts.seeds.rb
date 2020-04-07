@@ -1,18 +1,17 @@
 puts ">>>>starting loading records in Social Media Accounts table<<<<"
-networks = ['facebook', 'twitter']
 (0..249).each do |n|
   print "."
 
   person = Person.all.sample
-  network = networks.sample
+  network = Network.all.sample
   username = Faker::Internet.username(specifier: person.name, separators: %w(. _ -))
 
-  profile_link = "https://www.#{network}.com/#{username}"
+  profile_link = "https://www.#{network.name}.com/#{username}"
 
   record = SocialMediaAccount.find_by(:profile_link => profile_link)
   while record.present?
     username = Faker::Internet.username(specifier: 6..12, separators: %w(. _ -))
-    profile_link = "https://www.#{network}.com/#{username}"
+    profile_link = "https://www.#{network.name}.com/#{username}"
     record = SocialMediaAccount.find_by(:profile_link => profile_link)
   end
 
