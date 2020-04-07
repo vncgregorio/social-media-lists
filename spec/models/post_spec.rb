@@ -14,5 +14,31 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:post) { build(:post) }
+
+  it 'is valid with valid attributes' do
+    expect(post).to be_valid
+  end
+
+  it 'is not valid without a link' do
+    post.link = nil
+    expect(post).not_to be_valid
+  end
+
+  it 'is not valid without a post_date' do
+    post.post_date = nil
+    expect(post).not_to be_valid
+  end
+
+  it 'is not valid without a content' do
+    post.content = nil
+    expect(post).not_to be_valid
+  end
+
+  describe "associations" do
+    it 'is valid without social_media_account' do
+      post.social_media_account = nil
+      expect(post).to be_valid
+    end
+  end
 end

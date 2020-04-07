@@ -13,5 +13,34 @@
 require 'rails_helper'
 
 RSpec.describe Network, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:network) { build(:network) }
+
+  it 'is valid with valid attributes' do
+    expect(network).to be_valid
+  end
+
+  it 'is not valid without a name' do
+    network.name = nil
+    expect(network).not_to be_valid
+  end
+
+  it 'is not valid without an icon' do
+    network.icon = nil
+    expect(network).not_to be_valid
+  end
+
+  it 'is not valid without a connector' do
+    network.connector = nil
+    expect(network).not_to be_valid
+  end
+
+  it 'is not valid without an api_url' do
+    network.api_url = nil
+    expect(network).not_to be_valid
+  end
+
+  describe "associations" do
+    it { should have_many(:social_media_accounts) }
+  end
+
 end

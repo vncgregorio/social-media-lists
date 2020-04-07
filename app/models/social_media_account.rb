@@ -14,7 +14,7 @@ class SocialMediaAccount < ApplicationRecord
 
   belongs_to :person, :optional => false
   belongs_to :network, :optional => false
-  has_many :posts
+  has_many :posts, :dependent => :nullify
 
   validates_presence_of :profile_link
   validates_uniqueness_of :profile_link

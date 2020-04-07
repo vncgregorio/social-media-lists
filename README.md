@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# about testing scopes...
+# https://thoughtbot.com/blog/testing-named-scopes
+# https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/  
