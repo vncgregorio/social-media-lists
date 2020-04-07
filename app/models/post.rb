@@ -7,6 +7,7 @@
 #  post_date               :datetime
 #  link                    :string(255)
 #  content                 :text(65535)
+#  image_link              :string(255)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #

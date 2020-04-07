@@ -39,6 +39,9 @@ en:
       final_date: "ex.: 20201231"
       filter: "Filter"
     filters:
+      title: "Filters"
       records: "records"
       networks: "Social Networks:"
       lists: "Lists:"
+    posts:
+      title: "Posts"

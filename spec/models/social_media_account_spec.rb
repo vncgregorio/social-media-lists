@@ -4,7 +4,8 @@
 #
 #  id           :bigint           not null, primary key
 #  person_id    :integer
-#  network      :string(255)
+#  network_id   :integer
+#  username     :string(255)
 #  profile_link :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
