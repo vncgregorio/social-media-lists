@@ -5,9 +5,9 @@
 Rails 5.2.1
 
 É necessário configurar os acessos à base de dados no arquivo database.yml
-A aplicação foi desenvolvida utilizando MySQL (https://www.mysql.com/) como base de dados porém pode ser alterada para utilizar PostgreSQL (https://www.postgresql.org/) ou outra base de dados com alterações no Gemfile (para o adaptador) e no database.yml.
+A aplicação foi desenvolvida utilizando [MySQL](https://www.mysql.com/) como base de dados porém pode ser alterada para utilizar [PostgreSQL](https://www.postgresql.org/) ou outra base de dados com alterações no Gemfile (para o adaptador) e no database.yml.
 
-Para utilização em máquina de desenvolvimento com outros projetos Rails em versões diferentes, recomendo a utilização de um sistema gestor de stacks de desenvolvimento, como o RVM. Caso esse seja o seu caso, crie uma nova gemset com os comandos abaixo:
+Para utilização em máquina de desenvolvimento com outros projetos Rails em versões diferentes, recomendo a utilização de um sistema gestor de stacks de desenvolvimento, como o [RVM](https://rvm.io/). Caso esse seja o seu caso, crie uma nova gemset com os comandos abaixo:
 
 ```
 rvm gemset create rails-social-media-lists
@@ -30,25 +30,23 @@ rake db:create db:migrate db:seed
 
 A aplicação utiliza as dependências abaixo:
 
-rspec
-  Utilizei o RSpec para os testes unitários e para os testes integrados (features).
-capybara
-  Utilizado para testes de integração para simular a navegação do usuário.
-shoulda-matchers
-  Gem com DSL utilizada para facilitar o desenvolvimento dos testes integrados do sistema
-factory_bot_rails
-  Utilizado para a geração de stubs para os testes automátizados.
-faker
-  Utilizado para a geração de dados fake para os stubs nos testes e para popular a base de dados de desenvolvimento.
-database_cleaner
-  Gem utilizada para limpar e manter a base de dados de testes e stubs estável.
-seedbank
-  Para organizar o carregamento da base de dados em diversas tabelas e, também, para não poluir um único arquivo de db/seeds.rb.
-annotate
-  Gem utilizada para gerar comentários e documentação em modelos e testes com o mapeamento das colunas em base de dados para um recurso
-will_paginate
-will_paginate-bootstrap4
-  Gems utilizadas para gerar a paginação na interface de listagem dos posts.
+[rspec](https://github.com/rspec/rspec-rails) - Utilizei o RSpec para os testes unitários e para os testes integrados (features).
+
+[capybara](https://github.com/teamcapybara/capybara) - Utilizado para testes de integração para simular a navegação do usuário.
+
+[shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) - Gem com DSL utilizada para facilitar o desenvolvimento dos testes integrados do sistema.
+
+[factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) - Utilizado para a geração de stubs para os testes automátizados.
+
+[faker](https://github.com/faker-ruby/faker) - Utilizado para a geração de dados fake para os stubs nos testes e para popular a base de dados de desenvolvimento.
+
+[database_cleaner](https://github.com/DatabaseCleaner/database_cleaner) - Gem utilizada para limpar e manter a base de dados de testes e stubs estável.
+
+[seedbank](https://github.com/james2m/seedbank) - Para organizar o carregamento da base de dados em diversas tabelas e, também, para não poluir um único arquivo de db/seeds.rb.
+
+[annotate_models](https://github.com/ctran/annotate_models) - Gem utilizada para gerar comentários e documentação em modelos e testes com o mapeamento das colunas em base de dados para um recurso
+
+[will_paginate](https://github.com/mislav/will_paginate) e [will_paginate-bootstrap4](https://github.com/delef/will_paginate-bootstrap4) - Gems utilizadas para gerar a paginação na interface de listagem dos posts.
 
 A aplicação também utiliza CDNs específicas para realizar o link para componentes visuais (bootstrap).
 
@@ -72,7 +70,7 @@ Assim, embora a tarefa indique para não realizar, seria possível instalar um a
 
 Ainda dentro do padrão do Rails (ActiveRecord), foi possível utilizar o dependent: :nullify para atender ao requisito de manter todas as postagens da base de dados mesmo com a exclusão do author.
 
-#Outras escolhas para o mesmo resultado
+## Outras escolhas para o mesmo resultado
 
 Uma possibilidade seria utilizar daemons apartados do código para realizar a indexação desses dados em formatos pré-configurados para os tipos de buscas a serem utilizadas. sunspot-solr ou elastic-search seriam boas opções para essa arquitetura da solução.
 
@@ -80,7 +78,11 @@ Porém, esse tipo de solução exige a instalação de serviços adicionais na m
 
 Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como MongoDB com mongoid por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
 
-#Tests
+## Melhorias Futuras
+
+Uma das melhorias significativas para essa aplicação seria o desenvolvimento de uma API para a consulta desses dados por demais aplicações, em conjunto com o desenvolvimento da interface em um framework como Angular ou Node.
+
+## Tests
 
 Para rodar os testes:
 
@@ -100,7 +102,7 @@ As definições de como realizar os testes e o quê deve ser testado em uma apli
 
 Para a padronização dos testes utilizei como referência:
 
-https://rspec.info/about/ (https://rspec.info/about/)
-http://www.betterspecs.org/ (http://www.betterspecs.org/)
-https://thoughtbot.com/blog/testing-named-scopes (https://thoughtbot.com/blog/testing-named-scopes)
-https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/  (https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
+[https://rspec.info/about/](https://rspec.info/about/)
+[http://www.betterspecs.org/](http://www.betterspecs.org/)
+[https://thoughtbot.com/blog/testing-named-scopes](https://thoughtbot.com/blog/testing-named-scopes)
+[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
