@@ -66,21 +66,21 @@ Essa solução permite um código limpo e de fácil compreensão, além da reuti
 
 Os scopes também facilitam o desenvolvimento de filtros com múltiplas listas ou redes sociais. As redes sociais foram apartadas em uma entidade específica na base de dados, com campos indicativos para a carga em tempo de execução dos conectores necessários e qual a URL base para a obtenção dos posts.
 
-Assim, embora a tarefa indique para não realizar, seria possível instalar um activeadmin e gerenciar todas as entidades da base de dados, inclusive incluir novas redes sociais sem a necessidade de alterações no código.
+Assim, embora a tarefa indique para não realizar, seria possível instalar um [activeadmin](https://github.com/activeadmin/activeadmin) e gerenciar todas as entidades da base de dados, inclusive incluir novas redes sociais sem a necessidade de alterações no código.
 
-Ainda dentro do padrão do Rails (ActiveRecord), foi possível utilizar o dependent: :nullify para atender ao requisito de manter todas as postagens da base de dados mesmo com a exclusão do author.
+Ainda dentro do padrão do Rails (ActiveRecord), foi possível utilizar o [dependent: :nullify](https://guides.rubyonrails.org/association_basics.html) para atender ao requisito de manter todas as postagens da base de dados mesmo com a exclusão do author.
 
 ## Outras escolhas para o mesmo resultado
 
-Uma possibilidade seria utilizar daemons apartados do código para realizar a indexação desses dados em formatos pré-configurados para os tipos de buscas a serem utilizadas. sunspot-solr ou elastic-search seriam boas opções para essa arquitetura da solução.
+Uma possibilidade seria utilizar daemons apartados do código para realizar a indexação desses dados em formatos pré-configurados para os tipos de buscas a serem utilizadas. [sunspot-solr](https://sunspot.github.io/) ou [elasticsearch](https://github.com/elastic/elasticsearch-ruby) seriam boas opções para essa arquitetura da solução.
 
 Porém, esse tipo de solução exige a instalação de serviços adicionais na máquina do usuário e complicações extras desnecessárias para uma aplicação com esse porte. Motivos pelos quais essa opção foi descartada.
 
-Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como MongoDB com mongoid por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
+Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como [MongoDB](https://www.mongodb.com/) com mongoid(https://github.com/mongodb/mongoid) por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
 
 ## Melhorias Futuras
 
-Uma das melhorias significativas para essa aplicação seria o desenvolvimento de uma API para a consulta desses dados por demais aplicações, em conjunto com o desenvolvimento da interface em um framework como Angular ou Node.
+Uma das melhorias significativas para essa aplicação seria o desenvolvimento de uma [API](https://jsonapi.org/) para a consulta desses dados por demais aplicações, em conjunto com o desenvolvimento da interface em um framework como Angular ou Node.
 
 ## Tests
 
