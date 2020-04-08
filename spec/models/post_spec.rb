@@ -41,4 +41,20 @@ RSpec.describe Post, type: :model do
       expect(post).to be_valid
     end
   end
+
+  it 'knows the social_media_lists it is included' do
+    list = create(:list)
+    person = create(:person)
+    list_member = create(:list_member,
+                    :list => list,
+                    :person => person
+                  )
+    social_media_account = create(:social_media_account,
+                    :person => person
+                  )
+    new_post = create(:post,
+                    :social_media_account => social_media_account
+                  )
+    expect(new_post.lists).to include(list.name)
+  end
 end

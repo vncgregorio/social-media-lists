@@ -45,3 +45,5 @@ en:
       lists: "Lists:"
     posts:
       title: "Posts"
+      posted: "Posted:"
+      lists: "Lists:"

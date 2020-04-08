@@ -25,4 +25,13 @@ class Post < ApplicationRecord
   scope :filter_by_authors, -> (authors) { joins(:social_media_account => :person).where('`people`.id IN (?)', authors)}
   scope :filter_by_initial_date, -> (initial_date) { where('post_date >= ?', initial_date)}
   scope :filter_by_final_date, -> (final_date) { where('post_date <= ?', final_date)}
+
+  def lists
+    social_media_lists = []
+    self.social_media_account.person.list_members.each do |list_member|
+      social_media_lists << list_member.list.name
+    end
+
+    return social_media_lists.join(', ')
+  end
 end
