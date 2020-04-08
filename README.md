@@ -106,4 +106,4 @@ For the standardization of tests I used as a reference:
 
 [https://thoughtbot.com/blog/testing-named-scopes](https://thoughtbot.com/blog/testing-named-scopes)
 
-[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12 / validations-are-behavior-associations-are-structure /)
+[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
