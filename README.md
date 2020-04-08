@@ -56,7 +56,7 @@ Data modeling follows the principle that a person can have multiple social media
 
 These people can be organized into lists and all posts from your social media accounts would be linked to that list.
 
-This scenario allows for some development approaches because the content is rich and fragmented in several different business entities, and can be filtered by many criteria.
+This scenario allows some development approaches because the content is rich and fragmented in several different business entities, and can be filtered by many criteria.
 
 To solve the task and keep external dependencies to a minimum, without sacrificing application performance, I choose to use a combination of scopes in the entities proposed for this scenario.
 
@@ -100,10 +100,10 @@ The definitions of how to perform the tests and what should be tested in an appl
 
 For the standardization of tests I used as a reference:
 
-[https://rspec.info/about/▪(https://rspec.info/about/)
+[https://rspec.info/about/](https://rspec.info/about/)
 
-[http://www.betterspecs.org/▪(http://www.betterspecs.org/)
+[http://www.betterspecs.org/](http://www.betterspecs.org/)
 
-[https://thoughtbot.com/blog/testing-named-scopes;(https://thoughtbot.com/blog/testing-named-scopes)
+[https://thoughtbot.com/blog/testing-named-scopes](https://thoughtbot.com/blog/testing-named-scopes)
 
-[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/==(https://blog.davidchelimsky.net/blog/2012/02/12 / validations-are-behavior-associations-are-structure /)
+[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12 / validations-are-behavior-associations-are-structure /)
