@@ -1,111 +1,109 @@
-# SOCIAL MEDIA LISTS V2 -   Vinícius Gregório
+# SOCIAL MEDIA LISTS V2 - Vinícius Gregório
 
-## Instalação
+## Installation
 
-Rails 5.2.1
+It is necessary to configure the accesses to the database in the database.yml file.
+The application was developed using [MySQL](https://www.mysql.com/) as a database but can be changed to use [PostgreSQL](https://www.postgresql.org/) or another database with changes to Gemfile (for the adapter) and database.yml.
 
-É necessário configurar os acessos à base de dados no arquivo database.yml
-A aplicação foi desenvolvida utilizando [MySQL](https://www.mysql.com/) como base de dados porém pode ser alterada para utilizar [PostgreSQL](https://www.postgresql.org/) ou outra base de dados com alterações no Gemfile (para o adaptador) e no database.yml.
-
-Para utilização em máquina de desenvolvimento com outros projetos Rails em versões diferentes, recomendo a utilização de um sistema gestor de stacks de desenvolvimento, como o [RVM](https://rvm.io/). Caso esse seja o seu caso, crie uma nova gemset com os comandos abaixo:
+For use on a development machine with other Rails projects in different versions, I recommend using a ruby environment management system, such as [RVM](https://rvm.io/). If this is your case, create a new gemset with the commands below:
 
 ```
 rvm gemset create rails-social-media-lists
 rvm gemset use rails-social-media-lists
 ```
 
-Após definir a gemset atual, execute o bundler para baixar todas as dependências do projeto:
+After defining the current gemset, run the bundler to install all project dependencies:
 
 ```
 bundle install
 ```
 
-Após atualizar a gemset com as dependências da aplicação, é necessário inicializar a base de dados para a utilização:
+After updating the gemset with the application's dependencies, it is necessary to initialize the database for use:
 
 ```
-rake db:create db:migrate db:seed
+rake db: create db: migrate db: seed
 ```
 
-## Dependências
+## Dependencies
 
-A aplicação utiliza as dependências abaixo:
+The application uses the dependencies below:
 
-[rspec](https://github.com/rspec/rspec-rails) - Utilizei o RSpec para os testes unitários e para os testes integrados (features).
+[rspec](https://github.com/rspec/rspec-rails) - RSpec for unit tests and for integration tests (feature).
 
-[capybara](https://github.com/teamcapybara/capybara) - Utilizado para testes de integração para simular a navegação do usuário.
+[capybara](https://github.com/teamcapybara/capybara) - For integration tests and simulate user navigation.
 
-[shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) - Gem com DSL utilizada para facilitar o desenvolvimento dos testes integrados do sistema.
+[shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) - Gem with DSL to facilitate integration tests development.
 
-[factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) - Utilizado para a geração de stubs para os testes automátizados.
+[factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) - For automated tests stub management.
 
-[faker](https://github.com/faker-ruby/faker) - Utilizado para a geração de dados fake para os stubs nos testes e para popular a base de dados de desenvolvimento.
+[faker](https://github.com/faker-ruby/faker) - Generate fake data for stubs in tests and to populate the development database.
 
-[database_cleaner](https://github.com/DatabaseCleaner/database_cleaner) - Gem utilizada para limpar e manter a base de dados de testes e stubs estável.
+[database_cleaner](https://github.com/DatabaseCleaner/database_cleaner) - Clean and keep the test database stable.
 
-[seedbank](https://github.com/james2m/seedbank) - Para organizar o carregamento da base de dados em diversas tabelas e, também, para não poluir um único arquivo de db/seeds.rb.
+[seedbank](https://github.com/james2m/seedbank) - To organize the loading of the database into several tables and also to not pollute a single file (db/seeds.rb).
 
-[annotate_models](https://github.com/ctran/annotate_models) - Gem utilizada para gerar comentários e documentação em modelos e testes com o mapeamento das colunas em base de dados para um recurso
+[annotate_models](https://github.com/ctran/annotate_models) - Generate comments and documentation on models and tests while mapping columns in the database for a resource.
 
-[will_paginate](https://github.com/mislav/will_paginate) e [will_paginate-bootstrap4](https://github.com/delef/will_paginate-bootstrap4) - Gems utilizadas para gerar a paginação na interface de listagem dos posts.
+[will_paginate](https://github.com/mislav/will_paginate) and [will_paginate-bootstrap4](https://github.com/delef/will_paginate-bootstrap4) - Boostrap 4 pagination for the posts listing interface .
 
-A aplicação também utiliza CDNs específicas para realizar o link para componentes visuais (bootstrap).
+The application also uses specific CDNs to link to visual components (bootstrap).
 
-## Sobre a tarefa
+## About the task
 
-A atividade propõe a criação de uma aplicação simples para a listagem de registros de mídias sociais, segmentados por redes sociais e listagens de pessoas.
+The activity proposes the development of a simple application for the listing of social media records, segmented by social networks and lists of people.
 
-A modelagem de dados segue o princípio de que uma pessoa pode ter diversas contas de mídias sociais, mesmo que diversas de uma mesma rede. Essas contas podem ter postagens com características próprias que também permitam um filtro pelo seu conteúdo.
+Data modeling follows the principle that a person can have multiple social media accounts, even if they are from the same social network. These accounts can have posts with their own characteristics that also allow a filter by their content.
 
-Essas pessoas podem ser organizadas em listas e, todos os posts das suas contas de mídias sociais, seriam atrelados a essa listagem.
+These people can be organized into lists and all posts from your social media accounts would be linked to that list.
 
-Esse cenário permite algumas abordagens de desenvolvimento pois o conteúdo é rico e fragmentado em diversas entidades distintas de negócios, podendo ser filtrado por diversos critérios.
+This scenario allows for some development approaches because the content is rich and fragmented in several different business entities, and can be filtered by many criteria.
 
-Para solucionar o tarefa e manter o mínimo de dependências externas, sem sacrificar a performance da aplicação, optei por utilizar uma combinação de scopes nas entidades propostas para esse cenário.
+To solve the task and keep external dependencies to a minimum, without sacrificing application performance, I choose to use a combination of scopes in the entities proposed for this scenario.
 
-Essa solução permite um código limpo e de fácil compreensão, além da reutilização de código em um módulo específico apartado (Filterable) que permite extender esse conceito também para as actions dentro do controller.
+This solution allows a clean and easy to understand code, in addition to the reuse of code in a specific separate module (Filterable) that allows to extend this concept also to the actions inside the controller.
 
-Os scopes também facilitam o desenvolvimento de filtros com múltiplas listas ou redes sociais. As redes sociais foram apartadas em uma entidade específica na base de dados, com campos indicativos para a carga em tempo de execução dos conectores necessários e qual a URL base para a obtenção dos posts.
+Scopes also facilitate the development of filters with multiple lists or social networks. The social networks were separated into a specific entity in the database, with indicative fields for runtime load of necessary connectors and base URL for obtaining the posts.
 
-Assim, embora a tarefa indique para não realizar, seria possível instalar um [activeadmin](https://github.com/activeadmin/activeadmin) e gerenciar todas as entidades da base de dados, inclusive incluir novas redes sociais sem a necessidade de alterações no código.
+Thus, although the task indicates not to perform, it would be possible to install an [activeadmin](https://github.com/activeadmin/activeadmin) and manage all entities in the database, including manage social networks without the need for changes in code.
 
-Ainda dentro do padrão do Rails (ActiveRecord), foi possível utilizar o [dependent: :nullify](https://guides.rubyonrails.org/association_basics.html) para atender ao requisito de manter todas as postagens da base de dados mesmo com a exclusão do author.
+Still within the Rails standard (ActiveRecord), it was possible to use [dependent:: nullify](https://guides.rubyonrails.org/association_basics.html) to meet the requirement to keep all posts in the database even with exclusion of the author.
 
-## Outras escolhas para o mesmo resultado
+## Other choices for the same result
 
-Uma possibilidade seria utilizar daemons apartados do código para realizar a indexação desses dados em formatos pré-configurados para os tipos de buscas a serem utilizadas. [sunspot-solr](https://sunspot.github.io/) ou [elasticsearch](https://github.com/elastic/elasticsearch-ruby) seriam boas opções para essa arquitetura da solução.
+One possibility would be to use daemons separated from the code to index these data in pre-configured formats for the types of searches to be used. [sunspot-solr](https://sunspot.github.io/) or [elasticsearch](https://github.com/elastic/elasticsearch-ruby) would be good options for this solution architecture.
 
-Porém, esse tipo de solução exige a instalação de serviços adicionais na máquina do usuário e complicações extras desnecessárias para uma aplicação com esse porte. Motivos pelos quais essa opção foi descartada.
+However, this type of solution requires installation of additional services on the user's machine and unnecessary extra complications for an application of this size. Reasons why this option was discarded.
 
-Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como [MongoDB](https://www.mongodb.com/) com [mongoid](https://github.com/mongodb/mongoid) por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
+Another possibility with great results would be to use a non-relational database, such as [MongoDB](https://www.mongodb.com/) with [mongoid](https://github.com/mongodb/mongoid) for its characteristic flexibility in data structure, allowing for more simplified filtering.
 
-## Melhorias Futuras
+## Future Improvements
 
-Uma das melhorias significativas para essa aplicação seria o desenvolvimento de uma [API](https://jsonapi.org/) para a consulta desses dados por demais aplicações, em conjunto com o desenvolvimento da interface em um framework como Angular ou Node.
+One of the significant improvements for this application would be the development of an [API](https://jsonapi.org/) to integrate this data in other applications, together with the development of the interface in a framework such as Angular or Node.
 
 ## Tests
 
-Para rodar os testes:
+To run the tests:
 
-```
+``
 rspec
-```
+``
 
-ou
+or
 
-```
+``
 bundle exec rspec
-```
+``
 
-Os teste foram cruciais para definirmos os relacionamentos entre as entidades propostas no exercício e também para verificar as possibilidades de filtros.
+The tests were crucial to define the relationships between the entities proposed in the exercise and also to verify the possibilities of filters.
 
-As definições de como realizar os testes e o quê deve ser testado em uma aplicação são assuntos de diversos debates contínuos literalmente por décadas na comunidade de desenvolvimento, com proponentes e defensores de diversas abordagens.
+The definitions of how to perform the tests and what should be tested in an application are the subject of several ongoing debates for literally decades in the development community, with proponents and advocates of different approaches.
 
-Para a padronização dos testes utilizei como referência:
+For the standardization of tests I used as a reference:
 
-[https://rspec.info/about/](https://rspec.info/about/)
+[https://rspec.info/about/▪(https://rspec.info/about/)
 
-[http://www.betterspecs.org/](http://www.betterspecs.org/)
+[http://www.betterspecs.org/▪(http://www.betterspecs.org/)
 
-[https://thoughtbot.com/blog/testing-named-scopes](https://thoughtbot.com/blog/testing-named-scopes)
+[https://thoughtbot.com/blog/testing-named-scopes;(https://thoughtbot.com/blog/testing-named-scopes)
 
-[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
+[https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/==(https://blog.davidchelimsky.net/blog/2012/02/12 / validations-are-behavior-associations-are-structure /)
