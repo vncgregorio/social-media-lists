@@ -76,7 +76,7 @@ Uma possibilidade seria utilizar daemons apartados do código para realizar a in
 
 Porém, esse tipo de solução exige a instalação de serviços adicionais na máquina do usuário e complicações extras desnecessárias para uma aplicação com esse porte. Motivos pelos quais essa opção foi descartada.
 
-Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como [MongoDB](https://www.mongodb.com/) com mongoid(https://github.com/mongodb/mongoid) por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
+Outra possibilidade com ótimos resultados seria utilizar uma base de dados não relacional, como [MongoDB](https://www.mongodb.com/) com [mongoid](https://github.com/mongodb/mongoid) por sua característica de flexibilidade na estrutura de dados, permitindo uma filtragem mais simplificada dos dados.
 
 ## Melhorias Futuras
 
@@ -103,6 +103,9 @@ As definições de como realizar os testes e o quê deve ser testado em uma apli
 Para a padronização dos testes utilizei como referência:
 
 [https://rspec.info/about/](https://rspec.info/about/)
+
 [http://www.betterspecs.org/](http://www.betterspecs.org/)
+
 [https://thoughtbot.com/blog/testing-named-scopes](https://thoughtbot.com/blog/testing-named-scopes)
+
 [https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
