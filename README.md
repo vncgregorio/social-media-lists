@@ -64,7 +64,7 @@ This solution allows a clean and easy to understand code, in addition to the reu
 
 Scopes also facilitate the development of filters with multiple lists or social networks. The social networks were separated into a specific entity in the database, with indicative fields for runtime load of necessary connectors and base URL for obtaining the posts.
 
-Thus, although the task indicates not to perform, it would be possible to install an [activeadmin](https://github.com/activeadmin/activeadmin) and manage all entities in the database, including manage social networks without the need for changes in code.
+Thus, although the task indicates not to do so, it would be possible to install an [activeadmin](https://github.com/activeadmin/activeadmin) and manage all entities in the database, including manage social networks without the need for changes in code.
 
 Still within the Rails standard (ActiveRecord), it was possible to use [dependent:: nullify](https://guides.rubyonrails.org/association_basics.html) to meet the requirement to keep all posts in the database even with exclusion of the author.
 
