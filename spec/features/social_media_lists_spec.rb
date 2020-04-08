@@ -36,19 +36,23 @@ RSpec.describe "SocialMediaLists", type: :feature do
 
     first_post = create(:post,
                             :social_media_account => first_social_media_account,
-                            :content => 'first'
+                            :content => 'first',
+                            :post_date => Date.parse('20200110')
                           )
     second_post = create(:post,
                             :social_media_account => second_social_media_account,
-                            :content => 'second'
+                            :content => 'second',
+                            :post_date => Date.parse('20200210')
                           )
     third_post = create(:post,
                             :social_media_account => third_social_media_account,
-                            :content => 'third'
+                            :content => 'third',
+                            :post_date => Date.parse('20200310')
                           )
     fourth_post = create(:post,
                             :social_media_account => fourth_social_media_account,
-                            :content => 'fourth'
+                            :content => 'fourth',
+                            :post_date => Date.parse('20200330')
                           )
 
     first_list = create(:list,
@@ -76,22 +80,34 @@ RSpec.describe "SocialMediaLists", type: :feature do
     expect(page).to have_text('4 records')
   end
 
-  scenario 'with text search filter' do    
+  scenario 'with text search filter' do
     fill_in 'content', :with => 'rst'
     click_button 'filter'
-    expect(page).to have_text('1 record')
+    expect(page).to have_text('1 records')
   end
 
   scenario 'with network filter' do
+    find(:css, '#networks_[value=1]').set(false)
+    click_button 'filter'
+    expect(page).to have_text('2 records')
   end
 
   scenario 'with initial post date filter' do
+    fill_in 'initial_date', :with => '20200308'
+    click_button 'filter'
+    expect(page).to have_text('2 records')
   end
 
   scenario 'with final post date filter' do
+    fill_in 'final_date', :with => '20200211'
+    click_button 'filter'
+    expect(page).to have_text('2 records')
   end
 
   scenario 'with list filter' do
+    find(:css, '#lists_[value=1]').set(true)
+    click_button 'filter'
+    expect(page).to have_text('2 records')
   end
 
 end
