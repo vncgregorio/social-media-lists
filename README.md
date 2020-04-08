@@ -21,7 +21,7 @@ bundle install
 After updating the gemset with the application's dependencies, it is necessary to initialize the database for use:
 
 ```
-rake db: create db: migrate db: seed
+rake db:create db:migrate db:seed
 ```
 
 ## Dependencies
